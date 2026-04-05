@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const transactionSchema = new mongoose.Schema({
     amount: {
-        type:number,
+        type: Number,
         required:true,
         min: 0,
     },
