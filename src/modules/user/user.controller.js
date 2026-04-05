@@ -1,5 +1,5 @@
-import {asyncHandler } from "../middleware/asynchandler.js";
-import * as userService  from "./user.service.js";
+import {asyncHandler } from "../../middleware/asynchandler.js";
+import {createUser, getAllUsers, updateUser} from "./user.service.js";
 
 export const createUserController = asyncHandler(async (req, res) => {
     const user = await createUser(req.body);

@@ -4,7 +4,7 @@ export const createUser = async (data) => {
     const {name, email, role } =data;
 
     //Validation
-    if(!name || !email)
+    if(!name || !email){
         throw { statusCOde: 400, message: "Name and email are required"};
 
     }
@@ -23,6 +23,7 @@ export const createUser = async (data) => {
     });
 
     return user;
+}; 
 
 export const getAllUsers = async () => {
    return await User.find().sort({ createdAt: -1});
@@ -33,7 +34,7 @@ export const updateUser = async (id, updateData) =>{
     const user =await User.findById(id);
 
     if (!user){
-        throw {statuscode: 404, message:"user not found" };
+        throw {statusCode: 404, message:"user not found" };
     }
     if (updateData.role) user.role = updateData.role;
     if (updateData.status) user.status=updateData.status;
@@ -41,3 +42,5 @@ export const updateUser = async (id, updateData) =>{
     await user.save();
     return user;
     };
+
+
