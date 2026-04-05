@@ -20,6 +20,14 @@ export const createTransaction =async (data, userId) => {
     return getTransactions;
 };
 
-export const getTransactions = async (query) => {
-    return await Transaction.find().sort({ createdAt: -1});
+export const getTransactions = async (filters) => {
+  const { page = 1, limit = 10 } = filters;
+
+  const skip = (page - 1) * limit;
+
+  return await Transaction.find()
+    .skip(skip)
+    .limit(Number(limit))
+    .sort({ date: -1 });
 };
+
