@@ -6,5 +6,4 @@ const router = express.Router();
 
 // Public route (no auth required)
 router.post("/login", loginController);
-router.get("/", protect, allowRoles("admin"),...);
 export default router;
